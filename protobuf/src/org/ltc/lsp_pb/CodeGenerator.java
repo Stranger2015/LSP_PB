@@ -1,7 +1,6 @@
 package org.ltc.lsp_pb;
 
-import com.google.protobuf.DescriptorProtos;
-import main.org.ltc.lsp_pb.GeneratorContext;
+import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -19,8 +18,8 @@ class CodeGenerator {
     }
 
     public
-    void handleFile ( DescriptorProtos.FileDescriptorProto fileDescriptorProto ) {
-        DescriptorProtos.FileDescriptorProto i = fileDescriptorProto.getDefaultInstanceForType();
+    void handleFile ( FileDescriptorProto fileDescriptorProto ) {
+        FileDescriptorProto i = fileDescriptorProto.getDefaultInstanceForType();
 //        protoc --descriptor_set_out=desc.pb schema.proto
     }
 

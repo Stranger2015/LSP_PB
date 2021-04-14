@@ -1,7 +1,5 @@
 package org.ltc.lsp_pb;
 
-import org.ltc.lsp_pb.CodeGenerator;
-
 /**
  *
  */
@@ -30,21 +28,33 @@ class CommandLineInterface {
         }
     }
 
+    /**
+     * @return
+     */
     public
     String getOption () {
         return option;
     }
 
+    /**
+     * @return
+     */
     public
     CodeGenerator getCodeGenerator () {
         return codeGenerator;
     }
 
+    /**
+     * @return
+     */
     public
     String getHelpText () {
         return helpText;
     }
 
+    /**
+     * @return
+     */
     public
     String getFlagName () {
         return flagName;
@@ -75,7 +85,11 @@ class CommandLineInterface {
         this.helpText = helpText;
     }
 
-  public  void run ( String[] args ) {
+    /**
+     * @param args
+     */
+    public
+    void run ( String[] args ) {
 // protoc --plugin=protoc-gen-mylang=/path/to/mygen.sh --mylang_out=/some/dir some.proto
     }
 }

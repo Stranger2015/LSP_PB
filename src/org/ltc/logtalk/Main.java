@@ -1,27 +1,33 @@
 package org.ltc.logtalk;
 
-import com.github.os72.protocjar.Protoc;
-import com.google.protobuf.compiler.PluginProtos;
-import main.org.ltc.lsp_pb.LogtalkGenerator;
-import org.ltc.lsp_pb.CodeGenerator;
+import com.google.protobuf.compiler.PluginProtos.CodeGeneratorRequest;
+import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse;
 import org.ltc.lsp_pb.CommandLineInterface;
+import org.ltc.lsp_pb.LogtalkGenerator;
 
 import java.io.IOException;
 
-public class Main {
+import static com.google.protobuf.compiler.PluginProtos.CodeGeneratorRequest.parseFrom;
 
-    public static void main(String[] args) throws IOException {
-        CommandLineInterface cli =new CommandLineInterface(args);
+/**
+ *
+ */
+public
+class Main {
+
+    public static
+    void main ( String[] args ) throws IOException {
+        CommandLineInterface cli = new CommandLineInterface(args);
         LogtalkGenerator gen = new LogtalkGenerator();
-        cli.registerGenerator("--lgt_out",gen,"");
+        cli.registerGenerator("--lgt_out", gen, "Logtalk code generator.");
 
 //        Protoc.main(args);
-        PluginProtos.CodeGeneratorRequest codeGeneratorRequest = PluginProtos.CodeGeneratorRequest.parseFrom(System.in);
+        CodeGeneratorRequest codeGeneratorRequest = parseFrom(System.in);
         codeGeneratorRequest.getProtoFileList().forEach(gen::handleFile);
         // get the response and do something with it
 
 
-        PluginProtos.CodeGeneratorResponse response = PluginProtos.CodeGeneratorResponse.newBuilder().build();
+        CodeGeneratorResponse response = CodeGeneratorResponse.newBuilder().build();
         response.writeTo(System.out);
     }
 }

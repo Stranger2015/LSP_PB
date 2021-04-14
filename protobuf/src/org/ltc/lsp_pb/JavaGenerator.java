@@ -1,6 +1,4 @@
-package main.org.ltc.lsp_pb;
-
-import org.ltc.lsp_pb.CodeGenerator;
+package org.ltc.lsp_pb;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -12,8 +10,10 @@ class JavaGenerator extends CodeGenerator {
 
     }
 
+    @Override
     public
     boolean generate ( FileDescriptor fileDescriptor, String string, GeneratorContext context, String error ) {
         return false;
     }
+
 }

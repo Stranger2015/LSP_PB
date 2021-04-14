@@ -1,4 +1,4 @@
-package main.org.ltc.lsp_pb;
+package org.ltc.lsp_pb;
 
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
@@ -10,12 +10,9 @@ import java.io.IOException;
  *
  */
 public
-class LogtalkGenerator extends PrologGenerator{
-    /**
-     * @throws IOException
-     */
+class PrologGenerator extends CodeGenerator {
     public
-    LogtalkGenerator () throws IOException {
+    PrologGenerator () throws IOException {
 
     }
 
@@ -37,6 +34,6 @@ class LogtalkGenerator extends PrologGenerator{
     @Override
     public
     boolean generate ( FileDescriptor fileDescriptor, String string, GeneratorContext context, String error ) {
-        return super.generate(fileDescriptor, string, context, error);
+        return false;
     }
 }

@@ -20,8 +20,8 @@
     <orderEntry type="library" name="Maven: io.netty:netty-codec:4.0.33.Final" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.slf4j:slf4j-api:1.7.2" level="project" />
     <orderEntry type="library" exported="" name="Maven: com.github.os72:protobuf-dynamic:1.0.1" level="project" />
-    <orderEntry type="library" exported="" name="Maven: com.github.os72:protoc-jar:3.11.4" level="project" />
     <orderEntry type="library" exported="" name="proto-google-common-protos-1.18.1" level="project" />
-    <orderEntry type="library" name="protoc-jar" level="project" />
+    <orderEntry type="library" exported="" name="protoc-jar" level="project" />
+    <orderEntry type="library" exported="" name="protoc-jar-maven-plugin-3.11.4-sources" level="project" />
   </component>
 </module>
