@@ -9,7 +9,7 @@ import java.io.IOException;
  *
  */
 public abstract
-class CodeGenerator {
+class CodeGenerator extends CodeGenApp {
     /**
      * @throws IOException
      */
@@ -25,6 +25,10 @@ class CodeGenerator {
 
     public abstract
     boolean generate ( FileDescriptor fileDescriptor, String string, GeneratorContext context, String error );
+
+    public abstract
+    CodeGenResponse process ( CodeGenRequest request );
+
 }
 
 

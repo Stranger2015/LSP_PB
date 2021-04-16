@@ -1,11 +1,16 @@
 package org.ltc.lsp_pb;
 
+import com.github.os72.protocjar.Protoc;
+
+import java.io.IOException;
+
 /**
  *
  */
 public
 class CommandLineInterface {
 
+    private final String[] args;
     private String flagName;
     private String option;
     private CodeGenerator codeGenerator;
@@ -16,16 +21,18 @@ class CommandLineInterface {
      */
     public
     CommandLineInterface ( String[] args ) {
-        switch (args.length) {
-            case 2:
-                flagName = args[0];//fall thru
-                helpText = args[1];
-            case 3:
-                option = args[2];
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + args.length);
-        }
+//        switch (args.length) {
+//            case 1:
+//                flagName = args[0];//fall thru
+//            case 2:
+//                helpText = args[1];
+//            case 3:
+//                option = args[2];
+//                break;
+//            default:
+//                throw new IllegalStateException("Unexpected value: " + args.length);
+//        }
+        this.args = args;
     }
 
     /**
@@ -60,7 +67,6 @@ class CommandLineInterface {
         return flagName;
     }
 
-
     /**
      * @param flagName
      * @param codeGenerator
@@ -89,7 +95,13 @@ class CommandLineInterface {
      * @param args
      */
     public
-    void run ( String[] args ) {
+    void run ( String[] args ) throws IOException, InterruptedException {
 // protoc --plugin=protoc-gen-mylang=/path/to/mygen.sh --mylang_out=/some/dir some.proto
+        Protoc.runProtoc(args);
+    }
+
+    public
+    String[] getArgs () {
+        return args;
     }
 }

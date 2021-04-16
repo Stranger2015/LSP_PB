@@ -44,8 +44,8 @@ typedef int int32_t;
 static functor_t FUNCTOR_error2;  /* error(Formal, Context) */
 
 static int
-instantiation_error()
-{ term_t ex;
+instantiation_error(){
+Term ex;
 
   if ( (ex = PL_new_term_ref()) &&
        PL_unify_term(ex,
@@ -70,7 +70,7 @@ void cp_net_order(char * to, char * from, int size)  /* must be a power of 2 */
 }
 
 static
-foreign_t integer_zigzag(term_t Integer, term_t ZigZag)
+foreign_t integer_zigzag(Term Integer, Term ZigZag)
 {	int64_t val, val1;
 
 	if(PL_get_int64(Integer, &val))
@@ -91,7 +91,7 @@ foreign_t integer_zigzag(term_t Integer, term_t ZigZag)
 }
 
 static
-foreign_t int32_codes(term_t Number, term_t Codes)
+foreign_t int32_codes(Term number, Term codes)
 {	 union
 		{
 		int32_t asNumber;
@@ -101,24 +101,24 @@ foreign_t int32_codes(term_t Number, term_t Codes)
 	char *data;
 	size_t len;
 
-	if(PL_get_integer(Number, &val.asNumber))
+	if(PL_get_integer(number, &val.asNumber))
 		{ cp_net_order(val1.asCodes, val.asCodes, sizeof(val1.asCodes));
 
-		return PL_unify_list_ncodes(Codes, sizeof(val1.asCodes), val1.asCodes);
+		return PL_unify_list_ncodes(codes, sizeof(val1.asCodes), val1.asCodes);
 		}
 
-	if(PL_get_list_nchars(Codes, &len, &data, CVT_LIST)
+	if(PL_get_list_nchars(codes, &len, &data, CVT_LIST)
 			&& len == sizeof(val.asCodes))
 		{ cp_net_order(val.asCodes, data, sizeof(val.asCodes));
 
-		return PL_unify_integer(Number, val.asNumber);
+		return PL_unify_integer(number, val.asNumber);
 		}
 
 	return instantiation_error();
 }
 
 static
-foreign_t int64_codes(term_t Number, term_t Codes)
+foreign_t int64_codes(Term number, Term codes)
 {
 	union
 		{
@@ -129,24 +129,24 @@ foreign_t int64_codes(term_t Number, term_t Codes)
 	char *data;
 	size_t len;
 
-	if(PL_get_int64(Number, &val.asNumber))
+	if(PL_get_int64(number, &val.asNumber))
 		{ cp_net_order(val1.asCodes, val.asCodes, sizeof(val1.asCodes));
 
-		return PL_unify_list_ncodes(Codes, sizeof(val1.asCodes), val1.asCodes);
+		return PL_unify_list_ncodes(codes, sizeof(val1.asCodes), val1.asCodes);
 		}
 
-	if(PL_get_list_nchars(Codes, &len, &data, CVT_LIST)
+	if(PL_get_list_nchars(codes, &len, &data, CVT_LIST)
 			&& len == sizeof(val.asCodes))
 		{ cp_net_order(val.asCodes, data, sizeof(val.asCodes));
 
-		return PL_unify_int64(Number, val.asNumber);
+		return PL_unify_int64(number, val.asNumber);
 		}
 
 	return instantiation_error();
 }
 
 static
-foreign_t float32_codes(term_t Number, term_t Codes)
+foreign_t float32_codes(Term number, Term codes)
 {
 	union
 		{
@@ -158,28 +158,28 @@ foreign_t float32_codes(term_t Number, term_t Codes)
 	size_t len;
 	double tmp;
 
-	if(PL_get_float(Number, &tmp))
+	if(PL_get_float(number, &tmp))
 		{ val.asNumber = (float)tmp;
 
 		cp_net_order(val1.asCodes, val.asCodes, sizeof(val1.asCodes));
 
-		return PL_unify_list_ncodes(Codes, sizeof(val1.asCodes), val1.asCodes);
+		return PL_unify_list_ncodes(codes, sizeof(val1.asCodes), val1.asCodes);
 		}
 
-	if(PL_get_list_nchars(Codes, &len, &data, CVT_LIST)
+	if(PL_get_list_nchars(codes, &len, &data, CVT_LIST)
 			&& len == sizeof(val.asCodes))
 		{ cp_net_order(val.asCodes, data, sizeof(val.asCodes));
 
 		tmp = val.asNumber;
 
-		return PL_unify_float(Number, tmp);
+		return PL_unify_float(number, tmp);
 		}
 
 	return instantiation_error();
 }
 
 static
-foreign_t float64_codes(term_t Number, term_t Codes)
+void float64_codes(Term number, Term codes)
 {
 	union
 		{
@@ -190,17 +190,17 @@ foreign_t float64_codes(term_t Number, term_t Codes)
 	char *data;
 	size_t len;
 
-	if(PL_get_float(Number, &val.asNumber))
+	if(PL_get_float(number, &val.asNumber))
 		{ cp_net_order(val1.asCodes, val.asCodes, sizeof(val1.asCodes));
 
-		return PL_unify_list_ncodes(Codes, sizeof(val1.asCodes), val1.asCodes);
+		return PL_unify_list_ncodes(codes, sizeof(val1.asCodes), val1.asCodes);
 		}
 
-	if(PL_get_list_nchars(Codes, &len, &data, CVT_LIST)
+	if(PL_get_list_nchars(codes, &len, &data, CVT_LIST)
 			&& len == sizeof(val.asCodes))
 		{ cp_net_order(val.asCodes, data, sizeof(val.asCodes));
 
-		return PL_unify_float(Number, val.asNumber);
+		return PL_unify_float(number, val.asNumber);
 		}
 
 	return instantiation_error();
