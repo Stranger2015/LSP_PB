@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="zip">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Desktop/Downloads/protobuf-3.5.18/zip4j-2.7.0.zip!/zip4j-2.7.0/src/main/java" />
+      <root url="jar://$USER_HOME$/Desktop/Downloads/protobuf-3.5.18/zip4j-2.7.0.zip!/zip4j-2.7.0/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

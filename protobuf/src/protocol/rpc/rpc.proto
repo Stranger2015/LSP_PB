@@ -18,10 +18,10 @@ import "protocol/protocol.proto";
 
 option cc_enable_arenas = true;
 option csharp_namespace = "Protocol.Rpc";
-option go_package = "go.lsp.dev/api/protocol/rpc";
+//option go_package = "go.lsp.dev/api/protocol/rpc";
 option java_multiple_files = true;
 option java_outer_classname = "RpcProto";
-option java_package = "dev.lsp.protocol.rpc";
+option java_package = "protocol.rpc";
 option objc_class_prefix = "LSPPR";
 option php_namespace = "Protocol\\Rpc";
 option ruby_package = "Protocol::Rpc";
@@ -114,6 +114,7 @@ service LanguageServerProtocol {
   // If a server receives requests after a shutdown request those requests should error with
   // `InvalidRequest`.
   rpc Shutdown(google.protobuf.Empty) returns (protocol.Error) {
+
     option (google.api.http) = {
       post: "/shutdown/*:shutdown"
       body: "*"

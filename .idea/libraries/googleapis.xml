@@ -2,8 +2,6 @@
   <library name="googleapis">
     <CLASSES />
     <JAVADOC />
-    <SOURCES>
-      <root url="file://$PROJECT_DIR$/protobuf/lib" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

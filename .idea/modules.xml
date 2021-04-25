@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LgtPbLS.iml" filepath="$PROJECT_DIR$/LgtPbLS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/protobuf/proto/proto.iml" filepath="$PROJECT_DIR$/protobuf/proto/proto.iml" />
       <module fileurl="file://$PROJECT_DIR$/protobuf/protobuf.iml" filepath="$PROJECT_DIR$/protobuf/protobuf.iml" />
     </modules>
   </component>

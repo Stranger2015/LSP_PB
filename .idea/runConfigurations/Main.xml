@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Main" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="openjdk-16" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <envs>
+      <env name="CLASSPATH" value=".;C:\Program Files\TayzGrid\lib;C:\Program Files\TayzGrid\lib\tg-client.jar;C:\Program Files\TayzGrid\lib\tg-license.jar;C:\Program Files\TayzGrid\lib\tg-runtime.jar;C:\Program Files\TayzGrid\lib\tg-serialization.jar;C:\Program Files\TayzGrid\libexec\tg-util.jar;" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="org.ltc.logtalk.Main" />
+    <module name="LgtPbLS" />
+    <option name="PROGRAM_PARAMETERS" value="--descriptor_set_out=rpc.schema --include_imports=$PROJECT_DIR$/lib --proto_path=$PROJECT_DIR$/protobuf/src/org/ltc/lsp_pb/protocol/rpc --java_out=$DST_DIR" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

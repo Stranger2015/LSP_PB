@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="protobuf" />
+        <module name="proto" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="protobuf" target="8" />
+      <module name="proto" target="1.5" />
+      <module name="protobuf" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>

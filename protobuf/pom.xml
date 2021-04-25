@@ -3,16 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.ltc.logtalk</groupId>
     <artifactId>protobuf</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-
+    <modules>
+        <module>proto</module>
+    </modules>
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
     </properties>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protoc -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protoc</artifactId>
+            <version>3.15.8</version>
+            <type>pom</type>
+        </dependency>
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
@@ -34,64 +43,132 @@
             <artifactId>protoc-jar</artifactId>
             <version>3.11.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>3.3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>3.3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>org.eclipse.jdt.core</artifactId>
+            <version>3.11.0.v20150520-2033</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
     </dependencies>
+    <!--    <pl//n>-->
+    <!--        <groupId>org.xolstice.maven.plugins</groupId>-->
+    <!--        <artifactId>protobuf-maven-plugin</artifactId>-->
+    <!--        <version>0.6.1</version>-->
+    <!--        <extensions>true</extensions>-->
+    <!--        <executions>-->
+    <!--            <execution>-->
+    <!--                <goals>-->
+    <!--                    <goal>compile</goal>-->
+    <!--                </goals>-->
+    <!--                <configuration>-->
+    <!--                    <protocPlugins>-->
+    <!--                        <protocPlugin>-->
+    <!--                            <id>myproto</id>-->
+    <!--                            <groupId>myproto</groupId>-->
+    <!--                            <artifactId>myproto-protoc-plugin</artifactId>-->
+    <!--                            <version>1.2</version>-->
+    <!--                            <mainClass>myproto.MyProtocPlugin</mainClass>-->
+    <!--                        </protocPlugin>-->
+    <!--                    </protocPlugins>-->
+    <!--                </configuration>-->
+    <!--            </execution>-->
+    <!--        </executions>-->
+    <!--    </plugin>-->
     <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.6.0</version>
+            </extension>
+        </extensions>
         <plugins>
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.5.1</version>
-                <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                            <!--<goal>compile-custom</goal>-->
-                            <goal>test-compile</goal>
-                            <!--<goal>test-compile-custom</goal>-->
-                        </goals>
-                        <configuration>
-                            <!--<protocArtifact>com.google.protobuf:protoc:3.5.1:exe:${os.detected.classifier}</protocArtifact>-->
-                            <protocArtifact>org.ltc.iltalk.protobuf.compiler:JavaLogtalkProtoc:0.1.1-alpha:java
-                            </protocArtifact>
-                            <protocPlugins>
-                                <protocPlugin>
-                                    <id>custom-protoc-plugin</id>
-                                    <groupId>com.github.stranger2015</groupId>
-                                    <artifactId>custom-protoc-plugin</artifactId>
-                                    <version>0.2.1-alpha</version>
-                                    <mainClass>org.ltc.iltalk.protobuf.compiler.ProtocPlugin</mainClass>
-                                    <model-property/>
-                                </protocPlugin>
-                            </protocPlugins>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>gmaven-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generateStubs</goal>
-                            <goal>compile</goal>
-                            <goal>generateTestStubs</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}
+                    </protocArtifact>
+                    <pluginId>grpc-java</pluginId>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
+                    </pluginArtifact>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-custom</goal>
+                            <goal>test-compile</goal>
+                            <goal>test-compile-custom</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.xolstice.maven.plugins</groupId>-->
+            <!--                <artifactId>protobuf-maven-plugin</artifactId>-->
+            <!--                <version>0.6.1</version>-->
+            <!--                <extensions>true</extensions>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <goals>-->
+            <!--                            <goal>compile</goal>-->
+            <!--                            <goal>compile-custom</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <protocPlugins>-->
+            <!--                                <protocPlugin>-->
+            <!--                                    <id>myproto</id>-->
+            <!--                                    <groupId>myproto</groupId>-->
+            <!--                                    <artifactId>myproto-protoc-plugin</artifactId>-->
+            <!--                                    <version>1.2</version>-->
+            <!--                                    <mainClass>myproto.MyProtocPlugin</mainClass>-->
+            <!--                                </protocPlugin>-->
+            <!--                            </protocPlugins>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.codehaus.gmaven</groupId>-->
+            <!--                <artifactId>gmaven-plugin</artifactId>-->
+            <!--                <version>1.5</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generateStubs</goal>-->
+            <!--                            <goal>compile</goal>-->
+            <!--                            <goal>generateTestStubs</goal>-->
+            <!--                            <goal>testCompile</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-compiler-plugin</artifactId>-->
+            <!--                <configuration>-->
+            <!--                    <source>8</source>-->
+            <!--                    <target>8</target>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 </project>

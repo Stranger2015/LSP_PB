@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="gnuprologjava">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../LtcProlog/lib/gnuprologjava-0.2.6-src.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../LtcProlog/lib/gnuprologjava-0.2.6-src.zip!/src" />
+    </SOURCES>
+  </library>
+</component>
