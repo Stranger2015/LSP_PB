@@ -18,6 +18,7 @@ option php_namespace = "Protocol";
 option ruby_package = "Protocol";
 option swift_prefix = "LSPP";
 
+
 // Error represents a JSON-RPC error.
 message Error {
   // A number indicating the error type that occurred.
@@ -55,8 +56,8 @@ enum Code {
   INTERNAL_ERROR = -32603;
 
   // Reserved for implementation-defined server-errors.
-  // SERVER_ERROR_START = -32099;
-  reserved -32099 to -32003;
+   SERVER_ERROR_START = -32099;
+//  reserved -32099 to -32003;
 
   // Server not initialized.
   SERVER_NOT_INITIALIZED = -32002;
@@ -65,8 +66,8 @@ enum Code {
   UNKNOWN_ERROR_CODE = -32001;
 
   // SERVER_ERROR_END = -32000;
-  reserved -32000;
-
+//  reserved -32000;
+//
   // Cancelled request.
   REQUEST_CANCELLED = -32800;
 

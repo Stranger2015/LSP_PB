@@ -3,12 +3,9 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.15.8/protobuf-java-3.15.8.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.15.8/protobuf-java-3.15.8-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.15.8/protobuf-java-3.15.8-sources.jar!/" />
-      <root url="jar://$USER_HOME$/Desktop/Downloads/protobuf-3.5.18/proto-google-common-protos-1.18.1-sources.zip!/" />
     </SOURCES>
   </library>
 </component>

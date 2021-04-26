@@ -9,7 +9,7 @@
 //  remember TcpClient can be both RpcClient or RpcServer
 //  and a TcpServer can be both RpcClient or RpcServer
 
-option java_package =   "org.ltc.lsp_pb.protocol"; //"com.googlecode.proto.bin.java.pro.duplex.wire
+option java_package =   "protocol"; //"com.googlecode.proto.bin.java.pro.duplex.wire
 
 option java_outer_classname = "DuplexProtocol";
 

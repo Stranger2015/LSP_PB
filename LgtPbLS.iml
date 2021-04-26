@@ -9,11 +9,12 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/null" />
     </content>
-    <orderEntry type="jdk" jdkName="openjdk-16" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Maven: io.netty:netty-handler:4.0.33.Final" level="project" />
     <orderEntry type="module" module-name="protobuf" exported="" />
     <orderEntry type="library" exported="" name="gnuprologjava" level="project" />
     <orderEntry type="library" exported="" name="zip" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.15.8" level="project" />
   </component>
 </module>

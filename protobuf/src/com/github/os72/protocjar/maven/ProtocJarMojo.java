@@ -32,12 +32,9 @@ import java.util.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
-import org.apache.maven.artifact.Artifact;
 //import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.apache.maven.artifact.factory.ArtifactFactory;
-import org.apache.maven.artifact.repository.ArtifactRepository;
 //import org.apache.maven.artifact.resolver.ArtifactResolver;
-import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 //import org.apache.maven.project.MavenProject;
@@ -50,7 +47,10 @@ import com.github.os72.protocjar.ProtocVersion;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
 import org.codehaus.plexus.util.FileUtils;
+import org.eclipse.aether.artifact.Artifact;
 import org.eclipse.aether.impl.ArtifactResolver;
+import org.eclipse.aether.repository.ArtifactRepository;
+import org.eclipse.aether.version.VersionRange;
 import org.eclipse.jdt.core.compiler.BuildContext;
 
 /**
@@ -452,7 +452,7 @@ public class ProtocJarMojo extends AbstractMojo
 			if (input.exists() && input.isDirectory()) {
 				Collection<File> protoFiles = FileUtils.listFiles(input, fileFilter, TrueFileFilter.INSTANCE);
 				for (File protoFile : protoFiles) {
-					if (target.cleanOutputFolder || buildContext.hasDelta(protoFile.getPath())) {
+					if (target.cleanOutputFolder || buildContext..hasDelta(protoFile.getPath())) {
 						processFile(protoFile, protocVersion, targetType, target.pluginPath, target.outputDirectory, target.outputOptions);
 					}
 					else {
